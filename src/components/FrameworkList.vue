@@ -4,15 +4,16 @@
         <div class="col-xs-12">
         <transition-group class="list-group" name="list" tag="ul">
             <FrameworkListItem
-                    :key="frameworkKey"
-                    @remove-me="removeMe"
                     v-for="(framework, frameworkKey) in frameworks"
-                    v-bind:framework="framework.name"
-                    v-bind:frameworkKey="frameworkKey"
+                    :key="frameworkKey"
+                    :framework="framework.name"
+                    :frameworkKey="frameworkKey"
+                    @remove-me="removeMe"
             />
         </transition-group>
     <p v-if="!frameworks.length">No frameworks!</p>
 <FrameworkForm :frameworks="frameworks"></FrameworkForm>
+            <FrameworkSorter :frameworks="frameworks"></FrameworkSorter>
         </div>
     </div>
 </template>
@@ -20,10 +21,11 @@
 <script>
 import FrameworkForm from './FrameworkForm.vue';
 import FrameworkListItem from './FrameworkListItem.vue';
+import FrameworkSorter from './FrameworkSorter.vue';
 
 export default {
   name: 'FrameworkList',
-  components: { FrameworkListItem, FrameworkForm },
+  components: { FrameworkSorter, FrameworkListItem, FrameworkForm },
   data() {
     return {
       frameworks: [{
