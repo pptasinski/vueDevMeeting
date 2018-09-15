@@ -18,7 +18,7 @@
         >
             Add new
         </button>
-        <div class="form-group">
+        <div class="form-group text-center" style="margin-top: 15px;">
         <span class="text-danger">{{ errors.first('newFramework') }}</span>
         </div>
     </form>
@@ -39,12 +39,8 @@ export default {
     addNew() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          const frameWorkName = this.newFramework.length > 0 ? this.newFramework : Math
-            .random()
-            .toString(36)
-            .substring(7);
           this.$props.frameworks.push({
-            name: frameWorkName,
+            name: this.newFramework,
           });
           this.newFramework = '';
           this.$validator.reset();

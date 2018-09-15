@@ -2,22 +2,23 @@
     <div class="row">
         <h3 class="text-center">Framework List</h3>
         <div class="col-xs-12">
-        <transition-group class="list-group" name="list" tag="ul">
-            <FrameworkListItem
-                    v-for="(framework, frameworkKey) in frameworks"
-                    :key="frameworkKey"
-                    :framework="framework.name"
-                    :frameworkKey="frameworkKey"
-                    @remove-me="removeMe"
-            />
-        </transition-group>
-    <p v-if="!frameworks.length">No frameworks!</p>
-<FrameworkForm :frameworks="frameworks"></FrameworkForm>
+            <transition-group class="list-group" name="list" tag="ul">
+                <FrameworkListItem
+                        v-for="(framework, frameworkKey) in frameworks"
+                        :key="frameworkKey"
+                        :framework="framework.name"
+                        :frameworkKey="frameworkKey"
+                        @remove-me="removeMe"
+                />
+            </transition-group>
+            <div v-if="!frameworks.length" class="alert alert-info text-center">
+                No frameworks!
+            </div>
+            <FrameworkForm :frameworks="frameworks"></FrameworkForm>
             <FrameworkSorter :frameworks="frameworks"></FrameworkSorter>
         </div>
     </div>
 </template>
-
 <script>
 import FrameworkForm from './FrameworkForm.vue';
 import FrameworkListItem from './FrameworkListItem.vue';
@@ -28,9 +29,20 @@ export default {
   components: { FrameworkSorter, FrameworkListItem, FrameworkForm },
   data() {
     return {
-      frameworks: [{
-        name: 'Angular',
-      }],
+      frameworks: [
+        {
+          name: 'Angular',
+        },
+        {
+          name: 'React',
+        },
+        {
+          name: 'Vue',
+        },
+        {
+          name: 'jQuery',
+        },
+      ],
     };
   },
   methods: {
