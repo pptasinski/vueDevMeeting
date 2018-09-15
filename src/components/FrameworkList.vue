@@ -3,18 +3,13 @@
         <h3 class="text-center">Framework List</h3>
         <div class="col-xs-12">
         <transition-group class="list-group" name="list" tag="ul">
-        <li
-                class="list-group-item"
-                v-for="(framework, frameworkKey) in frameworks"
-                :key="frameworkKey">
-            {{ framework.name }}
-            <button
-                    class="btn btn-xs btn-danger pull-right"
-                    v-on:click="removeMe(frameworkKey)"
-            >
-                Remove me
-            </button>
-        </li>
+            <FrameworkListItem
+                    :key="frameworkKey"
+                    @remove-me="removeMe"
+                    v-for="(framework, frameworkKey) in frameworks"
+                    v-bind:framework="framework.name"
+                    v-bind:frameworkKey="frameworkKey"
+            />
         </transition-group>
     <p v-if="!frameworks.length">No frameworks!</p>
 <FrameworkForm :frameworks="frameworks"></FrameworkForm>
@@ -24,10 +19,11 @@
 
 <script>
 import FrameworkForm from './FrameworkForm.vue';
+import FrameworkListItem from './FrameworkListItem.vue';
 
 export default {
   name: 'FrameworkList',
-  components: { FrameworkForm },
+  components: { FrameworkListItem, FrameworkForm },
   data() {
     return {
       frameworks: [{
@@ -36,8 +32,8 @@ export default {
     };
   },
   methods: {
-    removeMe(key) {
-      this.frameworks.splice(key, 1);
+    removeMe(e) {
+      this.frameworks.splice(e.key, 1);
     },
   },
 };
