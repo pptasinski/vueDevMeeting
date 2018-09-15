@@ -61,6 +61,7 @@ export default {
 </script>
 
 <style scoped>
+    .test {}
     .list-enter-active, .list-leave-active {
         transition: all 1s;
     }
