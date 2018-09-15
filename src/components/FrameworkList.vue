@@ -1,5 +1,6 @@
 <template>
     <div class="row">
+        <h3 class="text-center">Framework List</h3>
         <div class="col-xs-12">
         <transition-group class="list-group" name="list" tag="ul">
         <li
@@ -8,7 +9,7 @@
                 :key="frameworkKey">
             {{ framework.name }}
             <button
-                    class="btn btn-xs btn-danger"
+                    class="btn btn-xs btn-danger pull-right"
                     v-on:click="removeMe(frameworkKey)"
             >
                 Remove me

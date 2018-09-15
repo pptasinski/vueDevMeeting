@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent method="post" role="form">
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label></label>
             <input
                     class="form-control"
@@ -11,7 +11,13 @@
                     placeholder="Write framework name"
             />
         </div>
-        <button type="submit" @click="addNew()" class="btn btn-primary btn-block">Add new</button>
+        <button
+                type="submit"
+                @click="addNew()"
+                class="btn btn-sm btn-primary btn-block"
+        >
+            Add new
+        </button>
         <div class="form-group">
         <span class="text-danger">{{ errors.first('newFramework') }}</span>
         </div>
