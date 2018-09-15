@@ -15,7 +15,7 @@
                 No frameworks!
             </div>
             <FrameworkForm :frameworks="frameworks"></FrameworkForm>
-            <FrameworkSorter :frameworks="frameworks"></FrameworkSorter>
+            <FrameworkSorter @sort-me="sort"></FrameworkSorter>
         </div>
     </div>
 </template>
@@ -46,6 +46,13 @@ export default {
     };
   },
   methods: {
+    sort(){
+      this.frameworks = this.frameworks.sort(function(a, b){
+        if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+        if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+        return 0;
+      });
+    },
     removeMe(e) {
       this.frameworks.splice(e.key, 1);
     },
