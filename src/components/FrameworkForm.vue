@@ -1,9 +1,7 @@
 <template>
     <form @submit.prevent method="post" role="form">
-
-
         <div class="form-group">
-            <label for=""></label>
+            <label></label>
             <input
                     class="form-control"
                     v-validate="'required|min:6'"
@@ -14,7 +12,9 @@
             />
         </div>
         <button type="submit" @click="addNew()" class="btn btn-primary btn-block">Add new</button>
-        <span class="form-group text-danger">{{ errors.first('newFramework') }}</span>
+        <div class="form-group">
+        <span class="text-danger">{{ errors.first('newFramework') }}</span>
+        </div>
     </form>
 </template>
 
